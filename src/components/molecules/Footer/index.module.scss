@@ -1,0 +1,40 @@
+@import 'styles/color';
+
+.footer {
+	display: flex;
+	justify-content: center;
+	background-color: $primary;
+	padding: 40px 240px;
+
+	p {
+		font-size: 14px;
+		letter-spacing: 1px;
+		color: white;
+		text-align: center;
+	}
+
+	.job {
+			margin-left: 8px;
+
+		span {
+
+			&::after {
+				content: '';
+				display: inline-block;
+				width: 1px;
+				height: 10px;
+				background-color: white;
+				margin: 0 9px;
+
+			}
+		}
+
+		a {
+			color: $brand;
+
+			&:hover {
+				color: $light-green;
+			}
+		}
+	} 
+}

@@ -1,5 +1,6 @@
 import Header from "components/molecules/Header";
-import RouterView from 'router/index';
+import Footer from "components/molecules/Footer";
+import RouterView from "router/index";
 
 import "./App.scss";
 
@@ -7,7 +8,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <RouterView />
+      <div className="content">
+        <RouterView />
+      </div>
+      <Footer />
     </div>
   );
 }
