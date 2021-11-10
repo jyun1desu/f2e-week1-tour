@@ -4,7 +4,7 @@ import style from "./index.module.scss";
 
 export default function index() {
   return (
-    <header>
+    <header className={style.header}>
       <div className={style.brand}>
         <div className={style.logo} />
         <h1>台灣旅遊</h1>
