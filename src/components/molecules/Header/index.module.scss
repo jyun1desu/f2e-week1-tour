@@ -1,0 +1,62 @@
+@import 'styles/color';
+
+header {
+	display: flex;
+	justify-content: space-between;
+	background-color: $primary;
+	padding: 22px 240px;
+
+	.brand {
+		display: flex;
+		align-items: center;
+
+		.logo {
+			width: 20px;
+			height: 20px;
+			background-color: white;
+			border-radius: 2px;
+			position: relative;
+			margin-right: 8px;
+			
+			&::after {
+				content: '';
+				display: block;
+				width: 6px;
+				height: 6px;
+				background-color: $primary;
+				border-radius: 1px;
+
+				position: absolute;
+				right: 1px;
+				bottom: 1px;
+			}
+		}
+
+		h1 {
+			font-size: 18px;
+			font-weight: 500;
+			color: white;
+			margin: 0;
+		}
+	}
+
+	.navigation {
+		ul {
+			display: flex;
+			padding: 0;
+			list-style: none;
+
+			li {
+				& + li {
+					margin-left: 33px;
+				}
+
+				a {
+					font-size: 18px;
+					color: white;
+					font-weight: 500;
+				}
+			}
+		}
+	} 
+}
