@@ -1,0 +1,13 @@
+@import "styles/color";
+
+.input {
+    border: 1px solid $grey;
+    padding: 8px;
+    font-size: 18px;
+    color: $primary;
+    line-height: 1.5;
+
+    &::placeholder {
+        color: $grey;
+    }
+}

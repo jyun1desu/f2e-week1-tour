@@ -1,0 +1,23 @@
+@import "styles/color";
+
+.selector {
+    & > .inputField {
+        display: flex;
+        background-color: $white-grey;
+        padding: 8px 12px;
+
+        & > input {
+            width: 100%;
+            font-size: 18px;
+
+            &::placeholder {
+                color: $primary;
+            }
+        }
+
+        & > span {
+            font-size: 18px;
+            color: $primary;
+        }
+    }
+}

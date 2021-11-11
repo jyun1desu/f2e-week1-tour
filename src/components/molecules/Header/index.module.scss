@@ -3,8 +3,13 @@
 .header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	background-color: $primary;
 	padding: 22px 240px;
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	opacity: 0.95;
 
 	.brand {
 		display: flex;
@@ -43,8 +48,6 @@
 	.navigation {
 		ul {
 			display: flex;
-			padding: 0;
-			list-style: none;
 
 			li {
 				& + li {

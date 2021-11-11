@@ -2,12 +2,12 @@ import React from "react";
 
 import style from "./index.module.scss";
 
-export default function index() {
+const Header = () => {
   return (
     <header className={style.header}>
       <div className={style.brand}>
         <div className={style.logo} />
-        <h1>台灣旅遊</h1>
+        <h1>臺灣旅遊</h1>
       </div>
       <nav className={style.navigation}>
         <ul>
@@ -31,3 +31,5 @@ export default function index() {
     </header>
   );
 }
+
+export default Header;

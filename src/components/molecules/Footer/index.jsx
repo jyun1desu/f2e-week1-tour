@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./index.module.scss";
 
-export default function index() {
+const Footer = () => {
   return (
     <footer className={style.footer}>
       <p>Taiwan Tourguide ©</p>
@@ -16,3 +16,5 @@ export default function index() {
     </footer>
   );
 }
+
+export default Footer;
