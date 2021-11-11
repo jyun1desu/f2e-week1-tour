@@ -9,14 +9,15 @@ import useResize from "util/useResize";
 
 import style from "./index.module.scss";
 
-const Carousel = ({ autoPlay = false }) => {
+const Carousel = ({ attractionData = [1, 2, 3, 4], showAmount = 3 }) => {
   const { width: windowWidth } = useResize();
   const itemRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const translateX = useMemo(() => {
     if (!itemRef.current?.offsetWidth) return 0;
-    const itemWidth = (itemRef.current?.offsetWidth - 25 * 2) / 3;
+    const itemWidth =
+      (itemRef.current?.offsetWidth - 25 * (showAmount - 1)) / showAmount;
     const oneSlide = itemWidth + 25;
     return currentIndex * oneSlide;
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,26 +43,37 @@ const Carousel = ({ autoPlay = false }) => {
           className={style.itemList}
           style={{ transform: `translateX(-${translateX}px)` }}
         >
-          <AttractionCard className={style.item} />
-          <AttractionCard className={style.item} />
-          <AttractionCard className={style.item} />
-          <AttractionCard className={style.item} />
-          <AttractionCard className={style.item} />
+          {attractionData.map((attraction) => {
+            return (
+              <AttractionCard
+                key={attraction}
+				type="brief"
+                className={style.item}
+                styles={{
+                  flex: `0 0 calc((100% - (25px * ${
+                    showAmount - 1
+                  })) / ${showAmount})`,
+                  marginRight: "25px",
+                }}
+              />
+            );
+          })}
         </div>
       </div>
-      {currentIndex < 2 && (
-        <button
-          className={style.indicator}
-          onClick={() =>
-            setCurrentIndex((pre) => {
-              if (pre === 4) return pre;
-              return pre + 1;
-            })
-          }
-        >
-          <NextIcon />
-        </button>
-      )}
+      {attractionData.length > showAmount &&
+        currentIndex < attractionData.length - showAmount && (
+          <button
+            className={style.indicator}
+            onClick={() =>
+              setCurrentIndex((pre) => {
+                if (pre === 4) return pre;
+                return pre + 1;
+              })
+            }
+          >
+            <NextIcon />
+          </button>
+        )}
     </div>
   );
 };

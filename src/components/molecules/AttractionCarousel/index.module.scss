@@ -11,14 +11,6 @@
 			display: flex;
 			transition: 0.4s transform linear;
 
-			.item {
-				flex: 0 0 calc((100% - (25px * 2)) / 3);
-
-				& + .item {
-					margin-left: 25px;
-				}	
-			}
-
 			img {
 				width: 100%;
 			}
