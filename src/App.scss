@@ -1,14 +1,32 @@
-@import 'styles/color';
-@import 'styles/breakpoints';
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;500;600&display=swap');
+@import "styles/color";
+@import "styles/breakpoints";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;500;600&display=swap");
 
 * {
-	font-family: 'Noto Sans TC', sans-serif;
+	font-family: "Noto Sans TC", sans-serif;
 	font-weight: normal;
+	box-sizing: border-box;
 }
 
 a {
 	text-decoration: none;
+}
+
+button,
+input {
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+p {
+	margin: 0;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
 }
 
 .App {
@@ -18,5 +36,6 @@ a {
 
 	.content {
 		flex: 1 1 auto;
+		margin-bottom: 80px;
 	}
 }
