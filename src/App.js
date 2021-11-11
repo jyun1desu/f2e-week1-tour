@@ -1,3 +1,5 @@
+import { BrowserRouter as Router } from "react-router-dom";
+
 import Header from "components/molecules/Header";
 import Footer from "components/molecules/Footer";
 import RouterView from "router/index";
@@ -5,15 +7,16 @@ import RouterView from "router/index";
 import "./App.scss";
 
 function App() {
-
   return (
-    <div className="App">
-      <Header />
-      <div className="content">
-        <RouterView />
+    <Router>
+      <div className="App">
+        <Header />
+        <div className="content">
+          <RouterView />
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </Router>
   );
 }
 

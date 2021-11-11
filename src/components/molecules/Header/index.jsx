@@ -1,14 +1,14 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import style from "./index.module.scss";
 
 const Header = () => {
   return (
     <header className={style.header}>
-      <div className={style.brand}>
+      <Link to="/" className={style.brand}>
         <div className={style.logo} />
         <h1>臺灣旅遊</h1>
-      </div>
+      </Link>
       <nav className={style.navigation}>
         <ul>
           <li>
@@ -30,6 +30,6 @@ const Header = () => {
       </nav>
     </header>
   );
-}
+};
 
 export default Header;
