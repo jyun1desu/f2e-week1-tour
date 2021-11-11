@@ -11,7 +11,7 @@ import style from "./index.module.scss";
 
 const AttractionCard = ({ className, styles, type = "brief" }) => {
   return (
-    <Link
+    <div
       style={styles}
       className={classnames(style.attractionCard, style[type], className)}
       to="/"
@@ -65,7 +65,7 @@ const AttractionCard = ({ className, styles, type = "brief" }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

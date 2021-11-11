@@ -1,0 +1,54 @@
+@import "styles/color";
+$dark: #6D7E7A;
+$light: #E5E8E8;
+
+.pagination {
+	display: flex;
+	align-items: center;
+
+	.pageButton {
+		width: 32px;
+		height: 32px;
+		color: $primary;
+		font-size: 16px;
+
+		& + .pageButton {
+			margin-left: 4px;
+		}
+
+		&:hover {
+			background-color: $light;
+		}
+
+		&.active {
+			color: white;
+			background-color: $dark;
+
+			&:hover {
+				background-color: $dark;
+			}
+		}
+	}
+}
+
+.indicator {
+	width: 32px;
+	height: 32px;
+	font-size: 0;
+
+	svg path {
+		fill: $dark;
+	}
+
+	&:hover {
+		background-color: $light;
+	}
+
+	&:first-child {
+		margin-right: 10px;
+	}
+
+	&:last-child {
+		margin-left: 10px;
+	}
+}
