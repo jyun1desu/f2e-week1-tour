@@ -18,20 +18,20 @@ const BreadCrumbs = ({ className, crumbs = [] }) => {
 
         if (!c.path) {
           return (
-            <>
-              <span className={style.nolink}>{c.label}</span>
+            <React.Fragment key={c.path + c.label}>
+              <span lassName={style.nolink}>{c.label}</span>
               {!lastChild && <NextIcon className={style.icon} />}
-            </>
+            </React.Fragment>
           );
         }
 
         return (
-          <>
+          <React.Fragment key={c.path + c.label}>
             <Link className={style.link} to={c.path}>
               {c.label}
             </Link>
             {!lastChild && <NextIcon className={style.icon} />}
-          </>
+          </React.Fragment>
         );
       })}
     </div>

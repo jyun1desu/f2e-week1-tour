@@ -21,7 +21,7 @@ const Sliders = ({ sliderData = [1, 2, 3, 4, 5], autoPlay = false }) => {
     if (autoPlay && !isHover) {
       timeout = window.setTimeout(() => {
         setCurrentIndex((pre) => {
-          if (pre === 2) {
+          if (pre === sliderData.length - 1) {
             return 0;
           }
           return pre + 1;

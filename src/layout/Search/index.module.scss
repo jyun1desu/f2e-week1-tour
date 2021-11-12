@@ -1,9 +1,8 @@
 @import "styles/color";
+@import "styles/common";
 
 .search {
-	display: flex;
-	flex-direction: column;
-	padding: 150px 240px 0;
+	@include page;
 
 	.searchBox {
 		width: 50%;
