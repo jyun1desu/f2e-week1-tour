@@ -1,6 +1,5 @@
 import React from "react";
 import classnames from "classnames";
-import Selector from "components/atoms/DropdownSelector";
 import { typeList } from "config/filter";
 
 import { ReactComponent as CheckedIcon } from "images/icon/checked.svg";

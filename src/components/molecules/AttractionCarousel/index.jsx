@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useEffect } from "react";
+import React, { useState, useRef, useMemo } from "react";
 
 import { ReactComponent as PrevIcon } from "images/icon/prev-arrow.svg";
 import { ReactComponent as NextIcon } from "images/icon/next-arrow.svg";

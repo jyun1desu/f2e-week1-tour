@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
+import useRouter from "util/useRouter";
 import AttractionCard from "components/atoms/AttractionCard";
 import Pagination from "components/atoms/Pagination";
 import BreadCrumbs from "components/atoms/BreadCrumbs";
@@ -12,13 +13,13 @@ import { ReactComponent as HintIcon } from "images/icon/emptyHint.svg";
 
 import style from "./index.module.scss";
 
-const Empty = () => {
+const Empty = ({ keyword }) => {
   return (
     <div className={style.empty}>
       <div className={style.hint}>
         <HintIcon />
         <p className={style.highlight}>不好意思，沒有相關結果</p>
-        <p>我們找不到「豆花」相關結果，請輸入其他關鍵字。</p>
+        <p>我們找不到「{keyword}」相關結果，請輸入其他關鍵字。</p>
       </div>
       <div className={style.recommends}>
         <p>熱門推薦</p>
@@ -40,6 +41,9 @@ const viewTypes = [
 ];
 
 const Search = () => {
+  const {
+    queries: { keyword },
+  } = useRouter();
   const [viewMode, setViewMode] = useState(() => {
     const mode = localStorage.getItem("viewMode") || viewTypes[0].value;
     return mode;
@@ -57,7 +61,7 @@ const Search = () => {
         <p className={style.brief}>
           <span className={style.highlight}> 20 </span>
           筆和
-          <span className={style.highlight}> 豆花 </span>
+          <span className={style.highlight}>{keyword}</span>
           相關結果
         </p>
         <div className={style.viewMode}>
@@ -78,13 +82,14 @@ const Search = () => {
           })}
         </div>
       </div>
-      <Empty />
-      {/* <div className={classnames(style.results, style[viewMode])}>
+      <Empty keyword={keyword} />
+      <div className={classnames(style.results, style[viewMode])}>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
           (attraction, index) => {
             return (
               <>
                 <AttractionCard
+                  key={"dd" + attraction}
                   className={style.item}
                   type={viewMode === "list" ? "detail" : "brief"}
                 />
@@ -95,8 +100,8 @@ const Search = () => {
             );
           }
         )}
-      </div> */}
-      {/* <Pagination className={style.pagination} /> */}
+      </div>
+      <Pagination className={style.pagination} />
     </div>
   );
 };

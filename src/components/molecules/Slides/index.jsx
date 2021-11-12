@@ -34,7 +34,7 @@ const Sliders = ({ sliderData = [1, 2, 3, 4, 5], autoPlay = false }) => {
         window.clearTimeout(timeout);
       }
     };
-  }, [autoPlay, currentIndex, isHover]);
+  }, [autoPlay, currentIndex, isHover, sliderData]);
 
   return (
     <div className={style.slides}>

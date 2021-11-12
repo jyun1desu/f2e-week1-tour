@@ -6,6 +6,7 @@
     font-size: 18px;
     color: $primary;
     line-height: 1.5;
+	cursor: default;
 
     &::placeholder {
         color: $grey;

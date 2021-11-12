@@ -73,7 +73,7 @@ const City = () => {
                 return (
                   <Link className={style.city} to="/">
                     <div className={style.cover}>
-                      <img src="https://i.pinimg.com/550x/94/96/cb/9496cb7a85bc3300253c3ff311a5e819.jpg" />
+                      <img src="https://i.pinimg.com/550x/94/96/cb/9496cb7a85bc3300253c3ff311a5e819.jpg" alt="" />
                     </div>
                     <p>新竹市</p>
                   </Link>
