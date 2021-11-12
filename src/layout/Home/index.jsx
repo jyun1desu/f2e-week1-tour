@@ -18,8 +18,8 @@ export default function index() {
             <p>探索臺灣</p>
             <p>Taiwan is here.</p>
           </div>
+          <SearchBox className={style.searchBox} type="big" />
         </section>
-        <SearchBox className={style.searchBox} />
       </div>
       <div className={style.bottom}>
         <section className={style.block}>

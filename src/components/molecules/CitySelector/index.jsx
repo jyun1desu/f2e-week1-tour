@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import Selector from "components/atoms/DropdownSelector";
-import { cititesList } from "config/filter";
+import { cititesListWithArea as cititesList } from "config/filter";
 
 import { ReactComponent as CheckedIcon } from "images/icon/checked.svg";
 import { ReactComponent as UncheckIcon } from "images/icon/uncheck.svg";

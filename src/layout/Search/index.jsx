@@ -51,8 +51,8 @@ const Search = () => {
 
   return (
     <div className={style.search}>
-		<BreadCrumbs crumbs={[{ label: "搜尋結果", path: "" }]} />
-      <SearchBox className={style.searchBox} />
+      <BreadCrumbs crumbs={[{ label: "搜尋結果", path: "" }]} />
+      <SearchBox className={style.searchBox} type="small" />
       <div className={style.topBar}>
         <p className={style.brief}>
           <span className={style.highlight}> 20 </span>

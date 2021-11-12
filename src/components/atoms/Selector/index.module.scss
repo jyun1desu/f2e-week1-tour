@@ -1,0 +1,76 @@
+@import "styles/color";
+
+.selector {
+	position: relative;
+
+    & > .inputField {
+        display: flex;
+        padding: 8px 12px;
+		cursor: pointer;
+		background-color: #E5E8E8;
+
+        & > input {
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+			color: $primary;
+        }
+
+        & > span {
+			position: relative;
+			top: -1px;
+            font-size: 16px;
+            color: $primary;
+            cursor: pointer;
+        }
+
+		&.chosen {
+			& > input::placeholder {
+					color: $brand;
+				}
+	
+			& > span {
+				color: $brand;
+			}
+		}
+    }
+
+	& > .panel {
+		position: absolute;
+		top: calc(100% + 10px);
+		min-width: 100%;
+		background-color: white;
+		box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+		z-index: 5;
+
+		max-height: 250px;
+		overflow: scroll;
+	}
+}
+
+.options {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: center;
+
+	.option {
+		width: 100%;
+		font-size: 16px;
+		padding: 12px;
+		color: $primary;
+		// text-align: center;
+		border-bottom: 1px solid transparent;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #E5E8E8;
+			border-bottom: 1px solid #E5E8E8;
+		}
+
+		&.chosen {
+			background-color: $light-grey;
+			border-bottom: 1px solid $light-grey;
+		}
+	}
+}
