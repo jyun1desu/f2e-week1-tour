@@ -9,7 +9,11 @@ import useResize from "util/useResize";
 
 import style from "./index.module.scss";
 
-const Carousel = ({ attractionData = [1, 2, 3, 4], showAmount = 3 }) => {
+const Carousel = ({
+  attractionData = [1, 2, 3, 4, 5, 6, 7, 8],
+  showAmount = 3,
+  oneClickSlideAmount = 3,
+}) => {
   const { width: windowWidth } = useResize();
   const itemRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,8 +34,8 @@ const Carousel = ({ attractionData = [1, 2, 3, 4], showAmount = 3 }) => {
           className={style.indicator}
           onClick={() =>
             setCurrentIndex((pre) => {
-              if (pre === 0) return 0;
-              return pre - 1;
+              if (pre - oneClickSlideAmount < 0) return 0;
+              return pre - oneClickSlideAmount;
             })
           }
         >
@@ -47,7 +51,7 @@ const Carousel = ({ attractionData = [1, 2, 3, 4], showAmount = 3 }) => {
             return (
               <AttractionCard
                 key={attraction}
-				type="brief"
+                type="brief"
                 className={style.item}
                 styles={{
                   flex: `0 0 calc((100% - (25px * ${
@@ -66,8 +70,7 @@ const Carousel = ({ attractionData = [1, 2, 3, 4], showAmount = 3 }) => {
             className={style.indicator}
             onClick={() =>
               setCurrentIndex((pre) => {
-                if (pre === 4) return pre;
-                return pre + 1;
+                return pre + oneClickSlideAmount;
               })
             }
           >

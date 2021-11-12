@@ -2,6 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./index.module.scss";
 
+const navigatorLinks = [
+  { label: "城市", path: "cities" },
+  { label: "美食", path: "foods" },
+  { label: "活動", path: "activities" },
+  { label: "住宿", path: "hotels" },
+  { label: "地圖探索", path: "map" },
+];
+
 const Header = () => {
   return (
     <header className={style.header}>
@@ -11,21 +19,11 @@ const Header = () => {
       </Link>
       <nav className={style.navigation}>
         <ul>
-          <li>
-            <a href="#">城市</a>
-          </li>
-          <li>
-            <a href="#">美食</a>
-          </li>
-          <li>
-            <a href="#">活動</a>
-          </li>
-          <li>
-            <a href="#">住宿</a>
-          </li>
-          <li>
-            <a href="#">地圖探索</a>
-          </li>
+          {navigatorLinks.map((n) => (
+            <li key={n.label}>
+              <Link to={n.path}>{n.label}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

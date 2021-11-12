@@ -1,9 +1,8 @@
 import React from "react";
 
-import SearchInput from "components/atoms/SearchInput";
-import Selector from "components/atoms/Selector";
-import RecentRecommendCarousel from "components/molecules/RecentRecommendCarousel";
+import RecentRecommendCarousel from "components/molecules/Slides";
 import AttractionCarousel from "components/molecules/AttractionCarousel";
+import SearchBox from "components/organisms/SearchBox";
 
 import keyVisual from "images/key-visual.png";
 
@@ -20,14 +19,7 @@ export default function index() {
             <p>Taiwan is here.</p>
           </div>
         </section>
-        <div className={style.searchBox}>
-          <SearchInput placeholder="搜尋地點、景點、活動" />
-          <div className={style.filters}>
-            <Selector className={style.filter} placeholder="城市" />
-            <Selector className={style.filter} placeholder="類型" />
-            <Selector className={style.filter} placeholder="時間" />
-          </div>
-        </div>
+        <SearchBox className={style.searchBox} />
       </div>
       <div className={style.bottom}>
         <section className={style.block}>

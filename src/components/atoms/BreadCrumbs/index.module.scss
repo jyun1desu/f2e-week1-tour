@@ -1,0 +1,28 @@
+@import "styles/color";
+
+.breadCrumbs {
+	margin-bottom: 32px;
+
+	.link {
+		font-size: 18px;
+		color: $brand;
+
+		&:last-child {
+			color: #B4BCBA;
+			;
+		}
+	}
+
+	.nolink {
+		font-size: 18px;
+		color: $primary;
+	}
+
+	.icon {
+		margin: 0 12px;
+
+		path {
+			fill: #6D7E7A;
+		}
+	}
+}

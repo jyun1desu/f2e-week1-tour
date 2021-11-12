@@ -1,0 +1,49 @@
+@import "styles/color";
+
+.selector {
+	position: relative;
+
+    & > .inputField {
+        display: flex;
+        padding: 8px 12px;
+		cursor: pointer;
+
+        & > input {
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+
+            &::placeholder {
+                color: $primary;
+            }
+        }
+
+        & > span {
+			position: relative;
+			top: -1px;
+            font-size: 16px;
+            color: $primary;
+            cursor: pointer;
+        }
+
+		&.chosen {
+			& > input::placeholder {
+					color: $brand;
+				}
+	
+			& > span {
+				color: $brand;
+			}
+		}
+    }
+
+	& > .panel {
+		position: absolute;
+		top: calc(100% + 10px);
+		min-width: 100%;
+		padding: 16px;
+		background-color: white;
+		box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+		z-index: 5;
+	}
+}

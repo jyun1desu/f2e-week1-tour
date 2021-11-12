@@ -1,6 +1,6 @@
 @import "styles/color";
 
-.carousel {
+.slides {
 	position: relative;
 
 	.windowWrapper {
@@ -9,7 +9,7 @@
 
 		.itemList {
 			display: flex;
-			transition: 0.8s transform linear;
+			transition: 0.6s transform linear;
 
 			.item {
 				flex: 0 0 100%;
@@ -49,24 +49,25 @@
 		}
 	}
 
-	.indicator {
+	.indicators {
 		display: flex;
-		align-items: center;
 		justify-content: center;
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		border: 1px solid $grey;
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
+		font-size: 0;
+		margin-top: 24px;
 
-		&:first-child {
-			right: calc(100% + 16px);
-		}
+		button {
+			width: 8px;
+			height: 8px;
+			background-color: #E5E8E8;
+			border-radius: 50%;
 
-		&:last-child {
-			left: calc(100% + 16px);
+			& + button {
+				margin-left: 16px;
+			}
+
+			&.active {
+				background-color: $grey;
+			}
 		}
 	}
 }
