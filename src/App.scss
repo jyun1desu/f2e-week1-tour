@@ -5,6 +5,7 @@
 	font-family: "Noto Sans TC", sans-serif;
 	font-weight: normal;
 	box-sizing: border-box;
+	color: $primary;
 }
 
 a {
@@ -22,6 +23,7 @@ input {
 
 p {
 	margin: 0;
+	color: $primary;
 }
 
 ul {

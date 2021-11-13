@@ -7,7 +7,7 @@
         display: flex;
         padding: 8px 12px;
 		cursor: pointer;
-		background-color: #E5E8E8;
+		background-color: $white-grey;
 
         & > input {
             width: 100%;
@@ -64,13 +64,13 @@
 		cursor: pointer;
 
 		&:hover {
-			background-color: #E5E8E8;
-			border-bottom: 1px solid #E5E8E8;
+			background-color: $white-grey;
+			border-bottom: 1px solid $white-grey;
 		}
 
 		&.chosen {
 			background-color: $light-grey;
-			border-bottom: 1px solid $light-grey;
+			border-bottom: 1px solid  $white-grey
 		}
 	}
 }

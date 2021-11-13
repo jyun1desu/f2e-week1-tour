@@ -2,13 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./index.module.scss";
 
-const navigatorLinks = [
-  { label: "城市", path: "cities" },
-  { label: "美食", path: "foods" },
-  { label: "活動", path: "activities" },
-  { label: "住宿", path: "hotels" },
-  { label: "地圖探索", path: "map" },
-];
+const navigatorLinks = [{ label: "探索城市", path: "city" }];
 
 const Header = () => {
   return (
