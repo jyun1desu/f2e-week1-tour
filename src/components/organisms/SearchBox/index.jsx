@@ -18,8 +18,12 @@ const SearchBox = ({ className, type }) => {
     queries: { keyword, city, type: dataType },
   } = useRouter();
   const navigate = useNavigate();
-  const [selectedCity, setCity] = useState(cititesList[0]);
-  const [selectedType, setType] = useState(typeList[0]);
+  const [selectedCity, setCity] = useState(() => {
+    return city ? cititesList.find((c) => c.value === city) : cititesList[0];
+  });
+  const [selectedType, setType] = useState(() => {
+    return city ? typeList.find((d) => d.value === dataType) : typeList[0];
+  });
   const [inputKeyWord, setInput] = useState(keyword);
 
   return (
@@ -28,9 +32,12 @@ const SearchBox = ({ className, type }) => {
         e.preventDefault();
 
         let params = {
-          city: selectedCity.value,
           type: selectedType.value,
         };
+
+        if (selectedCity.value) {
+          params = { ...params, city: selectedCity.value };
+        }
 
         if (inputKeyWord) {
           params = { ...params, keyword: inputKeyWord };

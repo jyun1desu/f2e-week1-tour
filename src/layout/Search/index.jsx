@@ -11,9 +11,11 @@ import { ReactComponent as ListIcon } from "images/icon/list.svg";
 import { ReactComponent as GridIcon } from "images/icon/grid.svg";
 import { ReactComponent as HintIcon } from "images/icon/emptyHint.svg";
 
+import { getTDXAPI, getRandomList } from "api/fetahAPI";
+
 import style from "./index.module.scss";
 
-const Empty = ({ keyword }) => {
+const Empty = ({ keyword, randomList }) => {
   return (
     <div className={style.empty}>
       <div className={style.hint}>
@@ -23,7 +25,7 @@ const Empty = ({ keyword }) => {
       </div>
       <div className={style.recommends}>
         <p>熱門推薦</p>
-        <AttractionCarousel />
+        <AttractionCarousel key={JSON.stringify(randomList)} attractionData={randomList} />
       </div>
     </div>
   );
@@ -42,12 +44,34 @@ const viewTypes = [
 
 const Search = () => {
   const {
-    queries: { keyword },
+    queries: { keyword, city, type: dataType },
   } = useRouter();
   const [viewMode, setViewMode] = useState(() => {
     const mode = localStorage.getItem("viewMode") || viewTypes[0].value;
     return mode;
   });
+  const [result, setResult] = useState([]);
+  const [random, setRandom] = useState([]);
+
+  useEffect(() => {
+    const search = async () => {
+      const { data } = await getTDXAPI(dataType, city, keyword);
+      setResult(data);
+    };
+
+    search();
+  }, [keyword, city, dataType]);
+
+  useEffect(() => {
+    const getRandom = async () => {
+      const { data } = await getRandomList(dataType, city);
+      setRandom(data);
+    };
+
+    if (!result || !result.length) {
+      getRandom();
+    }
+  }, [dataType, city, result]);
 
   useEffect(() => {
     localStorage.setItem("viewMode", viewMode);
@@ -59,7 +83,7 @@ const Search = () => {
       <SearchBox className={style.searchBox} type="small" />
       <div className={style.topBar}>
         <p className={style.brief}>
-          <span className={style.highlight}> 20 </span>
+          <span className={style.highlight}>{result.length}</span>
           筆和
           <span className={style.highlight}>{keyword}</span>
           相關結果
@@ -82,26 +106,30 @@ const Search = () => {
           })}
         </div>
       </div>
-      <Empty keyword={keyword} />
-      <div className={classnames(style.results, style[viewMode])}>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
-          (attraction, index) => {
-            return (
-              <>
-                <AttractionCard
-                  key={"dd" + attraction}
-                  className={style.item}
-                  type={viewMode === "list" ? "detail" : "brief"}
-                />
-                {(index + 1) % 3 === 0 && viewMode === "grid" && (
-                  <div className={style.divided} />
-                )}
-              </>
-            );
-          }
-        )}
-      </div>
-      <Pagination className={style.pagination} />
+
+      {!result.length ? (
+        <Empty keyword={keyword} randomList={random} />
+      ) : (
+        <>
+          <div className={classnames(style.results, style[viewMode])}>
+            {result.map((attraction, index) => {
+              return (
+                <React.Fragment key={attraction.ID}>
+                  <AttractionCard
+                    attractionData={attraction}
+                    className={style.item}
+                    type={viewMode === "list" ? "detail" : "brief"}
+                  />
+                  {(index + 1) % 3 === 0 && viewMode === "grid" && (
+                    <div className={style.divided} />
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </div>
+          <Pagination className={style.pagination} />
+        </>
+      )}
     </div>
   );
 };

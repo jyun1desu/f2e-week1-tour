@@ -1,14 +1,24 @@
-import React from "react";
-
-import RecentRecommendCarousel from "components/molecules/Slides";
+import React, { useMemo } from "react";
+import { useRecoilValue } from "recoil";
+import Slides from "components/molecules/Slides";
 import AttractionCarousel from "components/molecules/AttractionCarousel";
 import SearchBox from "components/organisms/SearchBox";
+
+import { bannersState } from "store/banner";
+import { artActivityListState } from "store/activity";
+import { natureListState } from "store/scenicSpot";
+import { recommandRestaurantListState } from "store/restaurant";
 
 import keyVisual from "images/key-visual.png";
 
 import style from "./index.module.scss";
 
-export default function index() {
+const Home = () => {
+  const banners = useRecoilValue(bannersState);
+  const natureList = useRecoilValue(natureListState);
+  const restaurantList = useRecoilValue(recommandRestaurantListState);
+  const artActivityList = useRecoilValue(artActivityListState);
+
   return (
     <div className={style.home}>
       <div className={style.top}>
@@ -26,29 +36,34 @@ export default function index() {
           <h2 className={style.title}>即將開始</h2>
           <div className={style.content}>
             <div className={style.content}>
-              <RecentRecommendCarousel autoPlay />
+              <Slides sliderData={banners} autoPlay showInfo />
             </div>
           </div>
         </section>
         <section className={style.block}>
           <h2 className={style.title}>踏青郊遊</h2>
           <div className={style.content}>
-            <AttractionCarousel key="go-out" />
+            <AttractionCarousel attractionData={natureList} key="go-out" />
           </div>
         </section>
         <section className={style.block}>
           <h2 className={style.title}>美食饗宴</h2>
           <div className={style.content}>
-            <AttractionCarousel key="foodie" />
+            <AttractionCarousel attractionData={restaurantList} key="foodie" />
           </div>
         </section>
         <section className={style.block}>
           <h2 className={style.title}>文化之旅</h2>
           <div className={style.content}>
-            <AttractionCarousel key="culture" />
+            <AttractionCarousel
+              attractionData={artActivityList}
+              key="culture"
+            />
           </div>
         </section>
       </div>
     </div>
   );
-}
+};
+
+export default Home;

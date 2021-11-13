@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { BrowserRouter as Router, useLocation } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Header from "components/molecules/Header";
@@ -30,9 +30,11 @@ const AppContent = () => {
 function App() {
   return (
     <RecoilRoot>
-      <Router>
-        <AppContent />
-      </Router>
+      <Suspense fallback={<div>loading</div>}>
+        <Router>
+          <AppContent />
+        </Router>
+      </Suspense>
     </RecoilRoot>
   );
 }

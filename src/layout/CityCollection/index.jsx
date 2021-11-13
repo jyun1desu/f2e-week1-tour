@@ -1,10 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import RecentRecommendCarousel from "components/molecules/Slides";
-import AttractionCarousel from "components/molecules/AttractionCarousel";
-
-import { ReactComponent as NextIcon } from "images/icon/next-arrow.svg";
 import keyVisual from "images/explore-city-banner.png";
 
 import { cititesListWithArea as area } from "config/filter";

@@ -9,47 +9,69 @@ import { ReactComponent as TagIcon } from "images/icon/tagIcon.svg";
 
 import style from "./index.module.scss";
 
-const AttractionCard = ({ className, styles, type = "brief" }) => {
+const AttractionCard = ({
+  attractionData = {},
+  className,
+  styles,
+  type = "brief",
+}) => {
+  const coverPhoto =
+    attractionData.Picture?.PictureUrl1 ||
+    "https://cdn04.pinkoi.com/pinkoi.site/event/miffy-2020/03_Theme%20shop_content.png";
+
   const renderContent = () => (
     <div className={style.content}>
       <div className={style.left}>
         <div className={style.cover}>
-          <img
-            src="https://cdn04.pinkoi.com/pinkoi.site/event/miffy-2020/03_Theme%20shop_content.png"
-            alt="cover"
-          />
+          <img src={coverPhoto} alt={attractionData.Name} />
         </div>
       </div>
       <div className={style.right}>
         <div className={style.info}>
-          <h3 className={style.name}>景美溪河濱自行車道</h3>
+          <h3 className={style.name}>{attractionData.Name}</h3>
           <p className={style.address}>
             <LocationIcon />
-            <span>台北市 大安區</span>
+            <span>{attractionData.Address || attractionData.City}</span>
           </p>
           <ul className={style.tags}>
-            <li>自然風景</li>
-            <li>自然風景</li>
-            <li>自然風景</li>
+            {[
+              attractionData.Class1,
+              attractionData.Class2,
+              attractionData.Class3,
+            ].map((c, i) => {
+              if (c) {
+                return <li key={attractionData.ID + c + i}>{c}</li>;
+              }
+              return null;
+            })}
           </ul>
           {type === "detail" && (
             <>
               <p className={style.description}>
-                四草綠色隧道，有著「臺版亞馬遜河」的美譽!波光瀲灩的綠色秘境、叢林般的自然生態，吸引眾多國內外觀光客到訪，為近年臺南必訪熱門景點。
+                {attractionData.Description || attractionData.DescriptionDetail}
               </p>
               <div className={style.bottom}>
                 <div className={style.left}>
                   <p>
                     <ClockIcon />
-                    <span>營業時間：00:00 - 24:00</span>
+                    <span>
+                      營業時間：{attractionData.OpenTime || "請洽相關單位"}
+                    </span>
                   </p>
                   <p>
                     <TagIcon />
-                    <span>票價：免費</span>
+                    <span>
+                      票價：{attractionData.TicketInfo || "請洽相關單位"}
+                    </span>
                   </p>
                 </div>
                 <div className={style.right}>
-                  <Link className={style.more} to="/">
+                  <Link
+                    className={style.more}
+                    to={`/${attractionData.type.toLowerCase()}/${
+                      attractionData.ID
+                    }`}
+                  >
                     <span>了解詳情</span>
                     <NextIcon />
                   </Link>
@@ -67,7 +89,7 @@ const AttractionCard = ({ className, styles, type = "brief" }) => {
       <Link
         style={styles}
         className={classnames(style.attractionCard, style[type], className)}
-        to="/"
+        to={`/${attractionData.type.toLowerCase()}/${attractionData.ID}`}
       >
         {renderContent()}
       </Link>

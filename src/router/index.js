@@ -12,9 +12,11 @@ export default function index() {
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route path="/search" element={<Search />} />
-      <Route path="/spot/:id" element={<Spot />} />
+      <Route path="/scenicSpot/:id" element={<Spot type="ScenicSpot" />} />
+      <Route path="/activity/:id" element={<Spot type="Activity" />} />
+      <Route path="/restaurant/:id" element={<Spot type="Restaurant" />} />
       <Route path="/city" element={<CityCollection />} />
-	  <Route path="/city/:id" element={<City />} />
+      <Route path="/city/:id" element={<City />} />
     </Routes>
   );
 }

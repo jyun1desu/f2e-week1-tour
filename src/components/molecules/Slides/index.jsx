@@ -5,7 +5,7 @@ import useResize from "util/useResize";
 
 import style from "./index.module.scss";
 
-const Sliders = ({ sliderData = [1, 2, 3, 4, 5], autoPlay = false }) => {
+const Sliders = ({ sliderData = [], autoPlay = false, showInfo = false }) => {
   const { width: windowWidth } = useResize();
   const itemRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,18 +49,46 @@ const Sliders = ({ sliderData = [1, 2, 3, 4, 5], autoPlay = false }) => {
           className={style.itemList}
           style={{ transform: `translateX(-${translateX}px)` }}
         >
-          {sliderData.map((s) => {
+          {sliderData.map((s, i) => {
+            const startTime = s?.startTime
+              ? s.startTime.split("T")[0].split("-").join(".")
+              : null;
+            const picture = s?.picture;
+            const pictureDesc = s?.picture?.pictureDescription1;
+
+            if (showInfo && !startTime) return null;
+
+            if (showInfo) {
+              return (
+                <Link
+                  key={"slider" + s.id}
+                  to={`/${s.type.toLowerCase()}/${s.id}`}
+                  className={style.item}
+                >
+                  <img src={picture} alt={pictureDesc || s?.name} />
+                  {showInfo && (
+                    <div className={style.info}>
+                      <p>{s?.name}</p>
+                      <p>{startTime}</p>
+                    </div>
+                  )}
+                </Link>
+              );
+            }
+
             return (
-              <Link key={"slider" + s} to="/" className={style.item}>
-                <img
-                  src="https://cdn04.pinkoi.com/pinkoi.site/event/miffy-2020/03_Theme%20shop_content.png"
-                  alt="play"
-                />
-                <div className={style.info}>
-                  <p>臺北大稻埕煙火2021跨年晚會</p>
-                  <p>2021.12.31</p>
-                </div>
-              </Link>
+              <div
+                key={"slider" + s.id + i}
+                className={style.item}
+              >
+                <img src={picture} alt={pictureDesc || s?.name} />
+                {showInfo && (
+                  <div className={style.info}>
+                    <p>{s?.name}</p>
+                    <p>{startTime}</p>
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>

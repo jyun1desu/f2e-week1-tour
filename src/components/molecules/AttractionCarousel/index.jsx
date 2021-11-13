@@ -10,7 +10,7 @@ import useResize from "util/useResize";
 import style from "./index.module.scss";
 
 const Carousel = ({
-  attractionData = [1, 2, 3, 4, 5, 6, 7, 8],
+  attractionData = [],
   showAmount = 3,
   oneClickSlideAmount = 3,
 }) => {
@@ -50,8 +50,9 @@ const Carousel = ({
           {attractionData.map((attraction) => {
             return (
               <AttractionCard
-                key={attraction}
+                key={attraction.ID}
                 type="brief"
+				attractionData={attraction}
                 className={style.item}
                 styles={{
                   flex: `0 0 calc((100% - (25px * ${

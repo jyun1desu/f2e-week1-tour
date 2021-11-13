@@ -30,6 +30,12 @@
 					font-weight: 500;
 					color: $brand;
 					margin: 0 0 4px 0;
+
+					display: -webkit-box;
+					-webkit-line-clamp: 1;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					text-overflow: ellipsis;
 				}
 	
 				& > .address {
@@ -41,6 +47,12 @@
 						margin-left: 5px;
 						font-size: 14px;
 						color: $primary;
+
+						display: -webkit-box;
+						-webkit-line-clamp: 1;
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+						text-overflow: ellipsis;
 					}
 				}
 	
@@ -99,6 +111,12 @@
 				color: $secondary;
 				text-align: justify;
 				margin-top: 20px;
+
+				display: -webkit-box;
+				-webkit-line-clamp: 4;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 
 			.bottom {
@@ -120,11 +138,17 @@
 							width: 18px;
 							height: 18px;
 							margin-right: 6px;
+							flex: 0 0 auto;
 						}
 
 						span {
 							font-size: 14px;
 							color: $primary;
+							display: -webkit-box;
+							-webkit-line-clamp: 1;
+							-webkit-box-orient: vertical;
+							overflow: hidden;
+							text-overflow: ellipsis;
 						}
 					}
 				}
@@ -139,6 +163,7 @@
 							line-height: 16px;
 							color: $brand;
 							margin-right: 10px;
+							white-space: nowrap
 						}
 
 						svg path {
