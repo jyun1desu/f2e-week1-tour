@@ -6,7 +6,7 @@ export const natureListState = selector({
   key: "natureList",
   get: async () => {
     const params = {
-      $top: 1000,
+      $top: 500,
       $filter: `contains(Class1,'自然風景類') and Picture/PictureUrl1 ne null`,
     };
 

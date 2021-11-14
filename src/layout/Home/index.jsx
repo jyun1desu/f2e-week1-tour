@@ -14,7 +14,7 @@ import keyVisual from "images/key-visual.png";
 import style from "./index.module.scss";
 
 const Home = () => {
-  const banners = useRecoilValue(bannersState);
+  const banners = useRecoilValue(bannersState(""));
   const natureList = useRecoilValue(natureListState);
   const restaurantList = useRecoilValue(recommandRestaurantListState);
   const artActivityList = useRecoilValue(artActivityListState);

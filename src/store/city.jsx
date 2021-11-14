@@ -1,16 +1,16 @@
 import { selector } from "recoil";
-import { getRestaurant } from "api/fetahAPI";
+import { getScenicSpot } from "api/fetahAPI";
 import { getRandomNumbers } from "util/helper";
 
-export const recommandRestaurantListState = selector({
-  key: "recommandRestaurantList",
+export const hotelListState = selector({
+  key: "hotelList",
   get: async () => {
     const params = {
       $top: 500,
-      $filter: `Picture/PictureUrl1 ne null`,
+      $filter: `contains(Class1,'自然風景類') and Picture/PictureUrl1 ne null`,
     };
 
-    const { data } = await getRestaurant("", "", params);
+    const { data } = await getScenicSpot("", "", params);
 
     const randoms = getRandomNumbers(data.length - 1, 12);
 

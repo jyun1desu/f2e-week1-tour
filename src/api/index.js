@@ -21,7 +21,7 @@ const getAuthorizationHeader = () => {
 const instance = axios.create({
   baseURL: "https://ptx.transportdata.tw/MOTC/v2/Tourism/",
   headers: getAuthorizationHeader(),
-  timeout: 10000,
+  timeout: 1000,
 });
 
 instance.interceptors.response.use(

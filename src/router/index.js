@@ -16,7 +16,7 @@ export default function index() {
       <Route path="/activity/:id" element={<Spot type="Activity" />} />
       <Route path="/restaurant/:id" element={<Spot type="Restaurant" />} />
       <Route path="/city" element={<CityCollection />} />
-      <Route path="/city/:id" element={<City />} />
+      <Route path="/city/:city" element={<City />} />
     </Routes>
   );
 }

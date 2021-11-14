@@ -8,14 +8,14 @@ import RouterView from "router/index";
 import "./App.scss";
 
 const AppContent = () => {
-  const location = useLocation();
+  const { pathname, search } = useLocation();
   useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     });
-  }, [location]);
+  }, [pathname, search]);
 
   return (
     <div className="App">

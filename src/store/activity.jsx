@@ -6,7 +6,7 @@ export const artActivityListState = selector({
   key: "artActivityList",
   get: async () => {
     const params = {
-      $top: 1000,
+      $top: 500,
       $filter: `contains(Class1,'藝文活動') or contains(Class2,'藝文活動') and Picture/PictureUrl1 ne null`,
     };
 

@@ -1,14 +1,14 @@
-import { selector } from "recoil";
+import { selectorFamily } from "recoil";
 import { getActivity } from "api/fetahAPI";
 
-export const bannersState = selector({
+export const bannersState = selectorFamily({
   key: "banner",
-  get: async () => {
+  get: (city) => async () => {
     const params = {
       $top: 3,
       $orderby: "StartTime desc",
     };
-    const { data } = await getActivity("", "", params);
+    const { data } = await getActivity(city, "", params);
 
     const modifiedData = data.map((d) => {
       return {
@@ -17,7 +17,8 @@ export const bannersState = selector({
         startTime: d?.StartTime,
         id: d?.ID,
         type: d?.type,
-		pictureDescription: d?.Picture?.PictureDescription1 || d?.Picture?.PictureDescription2,
+        pictureDescription:
+          d?.Picture?.PictureDescription1 || d?.Picture?.PictureDescription2,
       };
     });
 

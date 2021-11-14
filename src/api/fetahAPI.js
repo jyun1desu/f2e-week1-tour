@@ -37,7 +37,9 @@ export const getTDXAPI = async (
     const endTime = d.EndTime ? d.EndTime.split("T")[0] : "";
 
     const duration = startTime
-      ? `${startTime}${endTime && startTime !== endTime ? ' ～ ' + endTime : ""}`
+      ? `${startTime}${
+          endTime && startTime !== endTime ? " ～ " + endTime : ""
+        }`
       : "";
 
     return { ...d, type: type, cityId: cityId?.value, duration };
@@ -47,8 +49,12 @@ export const getTDXAPI = async (
 };
 
 export const getRandomList = async (type, city) => {
-  const { data, status } = await getTDXAPI(type, city, "", { $top: 1000 });
+  const { data, status } = await getTDXAPI(type, city);
   const randoms = getRandomNumbers(data.length - 1, 12);
+
+  if (data.length < 12) {
+    return { status, data };
+  }
 
   const modifiedData = data.filter((_, i) => {
     return randoms.includes(i);
@@ -84,4 +90,12 @@ export const getHotel = (city, keyword, params) => {
 
 export const getActivity = (city, keyword, params) => {
   return getTDXAPI("Activity", city, keyword, params);
+};
+
+export const getCityData = async (city) => {
+  const { data: spotData } = await getRandomList("ScenicSpot", city);
+  const { data: hotelData } = await getRandomList("Hotel", city);
+  const { data: restaurantData } = await getRandomList("Restaurant", city);
+
+  return { spotData, hotelData, restaurantData };
 };
