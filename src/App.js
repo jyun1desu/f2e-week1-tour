@@ -1,5 +1,5 @@
 import { useEffect, Suspense } from "react";
-import { BrowserRouter as Router, useLocation } from "react-router-dom";
+import { HashRouter as Router, useLocation } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Header from "components/molecules/Header";
 import Footer from "components/molecules/Footer";
