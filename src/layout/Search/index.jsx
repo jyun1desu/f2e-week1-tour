@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import classnames from "classnames";
 import useRouter from "util/useRouter";
 import AttractionCard from "components/atoms/AttractionCard";
@@ -25,7 +25,10 @@ const Empty = ({ keyword, randomList }) => {
       </div>
       <div className={style.recommends}>
         <p>熱門推薦</p>
-        <AttractionCarousel key={JSON.stringify(randomList)} attractionData={randomList} />
+        <AttractionCarousel
+          key={JSON.stringify(randomList)}
+          attractionData={randomList}
+        />
       </div>
     </div>
   );
@@ -44,7 +47,7 @@ const viewTypes = [
 
 const Search = () => {
   const {
-    queries: { keyword, city, type: dataType },
+    queries: { keyword, city, type: dataType, page = 1 },
   } = useRouter();
   const [viewMode, setViewMode] = useState(() => {
     const mode = localStorage.getItem("viewMode") || viewTypes[0].value;
@@ -52,6 +55,13 @@ const Search = () => {
   });
   const [result, setResult] = useState([]);
   const [random, setRandom] = useState([]);
+
+  const splitResult = useMemo(() => {
+    const start = (Number(page) - 1) * 15;
+    const end = start + 15;
+
+    return result.slice(start, end);
+  }, [page, result]);
 
   useEffect(() => {
     const search = async () => {
@@ -112,7 +122,7 @@ const Search = () => {
       ) : (
         <>
           <div className={classnames(style.results, style[viewMode])}>
-            {result.map((attraction, index) => {
+            {splitResult.map((attraction, index) => {
               return (
                 <React.Fragment key={attraction.ID}>
                   <AttractionCard
@@ -127,7 +137,10 @@ const Search = () => {
               );
             })}
           </div>
-          <Pagination className={style.pagination} />
+          <Pagination
+            totalLength={result.length}
+            className={style.pagination}
+          />
         </>
       )}
     </div>

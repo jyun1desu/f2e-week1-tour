@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import keyVisual from "images/explore-city-banner.png";
 
-import { cititesListWithArea as area } from "config/filter";
+import { cititesListWithArea as area, cititesList } from "config/filter";
 
 import style from "./index.module.scss";
 
@@ -17,12 +17,22 @@ const AreaCollection = ({ areaData }) => {
         <p className={style.introduce}>{areaData.introduce}</p>
         <div className={style.cities}>
           {areaData.cities.map((c) => {
+            const cityData = cititesList.find((city) => city.label === c.label);
+
+            if (!cityData) {
+              return null;
+            }
+
             return (
-              <Link key={c.label} to={c.path} className={style.city}>
+              <Link
+                key={c.label}
+                to={`/city/${cityData.value}`}
+                className={style.city}
+              >
                 <div className={style.wrapper}>
-                  <img src={keyVisual} alt="s" />
+                  <img src={cityData.image} alt={cityData.label} />
                   <div className={style.mask} />
-                  <span>{c.label}</span>
+                  <span>{cityData.label}</span>
                 </div>
               </Link>
             );

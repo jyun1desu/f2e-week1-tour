@@ -71,8 +71,7 @@ export const cititesList = [
     value: "NewTaipei",
     label: "新北市",
     label_en: "New Taipei City",
-    image:
-      "https://newtaipei.travel/image/25080/?r=1608178924890",
+    image: "https://newtaipei.travel/image/25080/?r=1608178924890",
   },
   {
     value: "Keelung",
@@ -98,7 +97,7 @@ export const cititesList = [
     label: "新竹市",
     label_en: "Hsinchu City",
     image:
-      "http://cloud.culture.tw/h_upload_ccacloud/festival/image/A0/B0/C0/D0/E0/F41/c2990ab8-1a6e-4d75-b74c-03147ca8026a.jpg",
+      "https://tourism.hccg.gov.tw/tourism555/program_img/hot/hotL/2021011414413112936.jpeg",
   },
   {
     value: "HsinchuCounty",
@@ -128,7 +127,12 @@ export const cititesList = [
     image:
       "https://www.taiwan.net.tw/att/event/d9db59b2-9d6d-4d7e-8231-fed0d97bcc52.jpg",
   },
-  { value: "YunlinCounty", label: "雲林縣", label_en: "Yunlin County" },
+  {
+    value: "YunlinCounty",
+    label: "雲林縣",
+    label_en: "Yunlin County",
+    image: "https://tour.yunlin.gov.tw/upload/menu/20180816101308.jpg",
+  },
   {
     value: "MiaoliCounty",
     label: "苗栗縣",
@@ -140,13 +144,13 @@ export const cititesList = [
     value: "Tainan",
     label: "臺南市",
     label_en: "Tainan City",
-    image: "https://swcoast-nsa.travel/image/2552/640x480",
+    image: "https://www.twtainan.net/image/73082/1024x768",
   },
   {
     value: "Kaohsiung",
     label: "高雄市",
     label_en: "Kaohsiung City",
-    image: "https://khh.travel/image/889/640x480",
+    image: "https://khh.travel/content/images/Attractions/35268/1024x768_attractions-image-s1xihzfgwk2sm0944aljfq.jpg",
   },
   {
     value: "ChiayiCounty",
@@ -159,13 +163,14 @@ export const cititesList = [
     label: "嘉義市",
     label_en: "Chiayi City",
     image:
-      "http://cloud.culture.tw/h_upload_ccacloud/festival/image/A0/B0/C0/D0/E0/F54/31575cd4-7b1c-4c19-a966-149b63bec587.jpg",
+      "https://travel.chiayi.gov.tw/UploadPlugin?file=AIddPYT12ipwEskhI%2F8%2Bx6upWBhdz3DBrXFZ4ZqM%2Bpm8i4WVSzIa1tI28Jmj4Pgs6o3TkWwZAC73xH3dfjaCCQ%3D%3D",
   },
   {
     value: "PingtungCounty",
     label: "屏東縣",
     label_en: "Pingtung County",
-    image: "http://210.69.151.212/ptngis/files/photos/l/marks/C1-01201.jpg",
+    image:
+      "https://static.wixstatic.com/media/66b10b_ec79840e934b4025997d35e7ff46e19c~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85/66b10b_ec79840e934b4025997d35e7ff46e19c~mv2.webp",
   },
   {
     value: "HualienCounty",

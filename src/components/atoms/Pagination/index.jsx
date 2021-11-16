@@ -1,20 +1,26 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import classnames from "classnames";
+import { parse, stringify } from "query-string";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ReactComponent as PrevIcon } from "images/icon/prev-arrow.svg";
 import { ReactComponent as NextIcon } from "images/icon/next-arrow.svg";
 
+import useRouter from "util/useRouter";
+
 import style from "./index.module.scss";
-import { useEffect } from "react/cjs/react.development";
 
 const Pagination = ({
-  onePageAmount = 9,
+  onePageAmount = 15,
   totalLength = 0,
   onChange = () => {},
   className,
 }) => {
+  const firstUpdate = useRef(true);
   const [page, setPage] = useState(1);
   const pages = Math.floor(totalLength / onePageAmount) + 1;
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { queries: { keyword, city, type } } = useRouter();
   const renderPageButtons = useMemo(() => {
     const pagesArray = Array.from(Array(pages), (_, x) => x + 1);
     const currentRow = Math.ceil(page / 10) - 1;
@@ -26,9 +32,21 @@ const Pagination = ({
   }, [page, pages]);
 
   useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
     onChange(page);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    const queries = parse(location.search);
+    const newQuries = "?" + stringify({ ...queries, page });
+    navigate(location.pathname + newQuries);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [type, city, keyword]);
 
   return (
     <div className={classnames(style.pagination, className)}>
@@ -59,7 +77,7 @@ const Pagination = ({
           key={n}
           onClick={() => setPage(n)}
           className={classnames(style.pageButton, {
-            [style.active]: page === n,
+            [style.active]: page == n,
           })}
         >
           {n}
